@@ -101,8 +101,8 @@ bool gl_init(BumpAllocator *transientStorage)
 
 void gl_render()
 {
-    glClearColor(119.f / 255.f, 33.f / 225.f, 111.f / 255.f, 1.f);
-    glClearDepth(0.f);
+    glClearColor(119.0f / 255.f, 33.0f / 255.0f, 111.0f / 255.0f, 1.0f);
+    glClearDepth(0.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glViewport(0, 0, input.screenSizeX, input.screenSizeY);
 

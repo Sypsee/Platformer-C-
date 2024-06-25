@@ -28,6 +28,8 @@ int main()
         // Update
         platform_update_window();
         gl_render();
+
+        platform_swap_buffers();
     }
 
     return 0;
