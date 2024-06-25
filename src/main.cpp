@@ -16,11 +16,11 @@
 
 int main()
 {
+    BumpAllocator transientStorage = make_bump_alloctor(MB(50));
     platform_create_window(800, 600, "Platformer C");
     input.screenSizeX = 800;
     input.screenSizeY = 600;
     
-    BumpAllocator transientStorage = make_bump_alloctor(MB(50));
     gl_init(&transientStorage);
 
     while (running)
