@@ -273,7 +273,7 @@ void* platform_load_gl_function(char* funcName)
         }
     }
 
-    return (void*)funcName;
+    return (void*)proc;
 }
 
 void platform_swap_buffers()
