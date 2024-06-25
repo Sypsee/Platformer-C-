@@ -59,7 +59,7 @@ bool platform_create_window(int width, int height, char* title)
     }
 
     int dwStyle = WS_OVERLAPPEDWINDOW;
-    PFNWGLCHOOSEPIXELFORMATEXTPROC wglChoosePixelFormatARB = nullptr;
+    PFNWGLCHOOSEPIXELFORMATARBPROC wglChoosePixelFormatARB = nullptr;
     PFNWGLCREATECONTEXTATTRIBSARBPROC wglCreateContextAttribsARB = nullptr;
 
     {
