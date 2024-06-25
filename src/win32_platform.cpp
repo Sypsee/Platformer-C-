@@ -7,6 +7,7 @@
 #include "wglext.h"
 
 static HWND window;
+static HDC dc;
 
 
 LRESULT CALLBACK window_callback(HWND window, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -47,7 +48,7 @@ bool platform_create_window(int width, int height, char* title)
     WNDCLASSA wc = {};
     wc.hInstance = instance;
     wc.hIcon = LoadIcon(instance, IDI_APPLICATION);
-    wc.hCursor = LoadCursor(instance, IDC_ARROW);
+    wc.hCursor = LoadCursor(NULL, IDC_ARROW);
     wc.lpszClassName = title;         // not the actual "title" rather the id for our window
     wc.lpfnWndProc = window_callback; // Callback for inputs on the window, DefWindowProcA -> default callback handler
 
@@ -58,7 +59,7 @@ bool platform_create_window(int width, int height, char* title)
     }
 
     int dwStyle = WS_OVERLAPPEDWINDOW;
-    PFNWGLCHOOSEPIXELFORMATEXTPROC wglChoosePixelFormatARB = nullptr;
+    PFNWGLCHOOSEPIXELFORMATARBPROC wglChoosePixelFormatARB = nullptr;
     PFNWGLCREATECONTEXTATTRIBSARBPROC wglCreateContextAttribsARB = nullptr;
 
     {
@@ -175,7 +176,7 @@ bool platform_create_window(int width, int height, char* title)
             return false;
         }
 
-        HDC dc = GetDC(window);
+        dc = GetDC(window);
         if (!dc)
         {
             GM_ASSERT(false, "Failed to get device context!");
@@ -272,5 +273,10 @@ void* platform_load_gl_function(char* funcName)
         }
     }
 
-    return (void*)funcName;
+    return (void*)proc;
+}
+
+void platform_swap_buffers()
+{
+    SwapBuffers(dc);
 }
