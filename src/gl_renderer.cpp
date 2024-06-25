@@ -94,6 +94,8 @@ bool gl_init(BumpAllocator *transientStorage)
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_GREATER);
 
+    glUseProgram(glContext.programID);
+
     return true;
 }
 
