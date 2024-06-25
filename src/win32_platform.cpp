@@ -7,6 +7,7 @@
 #include "wglext.h"
 
 static HWND window;
+static HDC dc;
 
 
 LRESULT CALLBACK window_callback(HWND window, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -175,7 +176,7 @@ bool platform_create_window(int width, int height, char* title)
             return false;
         }
 
-        HDC dc = GetDC(window);
+        dc = GetDC(window);
         if (!dc)
         {
             GM_ASSERT(false, "Failed to get device context!");
@@ -273,4 +274,9 @@ void* platform_load_gl_function(char* funcName)
     }
 
     return (void*)funcName;
+}
+
+void platform_swap_buffers()
+{
+    SwapBuffers(dc);
 }
