@@ -115,7 +115,7 @@ char* bump_alloc(BumpAllocator* ba, size_t size)
   char* result = nullptr;
 
   size_t allignedSize = (size + 7) & ~ 7; // This makes sure that the first 4 bits are 0
-  if (ba->used + allignedSize >= ba->capacity)
+  if (ba->used + allignedSize <= ba->capacity)
   {
     result = ba->memory + ba->used;
     ba->used += allignedSize;
