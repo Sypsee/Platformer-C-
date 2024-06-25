@@ -64,7 +64,7 @@ void _log(char* prefix, char* msg, TextColor textColor, Args... args)
   char formatBuffer[8192] = {};
   sprintf(formatBuffer, "%s %s %s \033[0m", TextColorTable[textColor], prefix, msg);
 
-  char textBuffer[8192] = {};
+  char textBuffer[8912] = {};
   sprintf(textBuffer, formatBuffer, args...);
 
   puts(textBuffer);
