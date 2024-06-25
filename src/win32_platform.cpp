@@ -48,7 +48,7 @@ bool platform_create_window(int width, int height, char* title)
     WNDCLASSA wc = {};
     wc.hInstance = instance;
     wc.hIcon = LoadIcon(instance, IDI_APPLICATION);
-    wc.hCursor = LoadCursor(instance, IDC_ARROW);
+    wc.hCursor = LoadCursor(NULL, IDC_ARROW);
     wc.lpszClassName = title;         // not the actual "title" rather the id for our window
     wc.lpfnWndProc = window_callback; // Callback for inputs on the window, DefWindowProcA -> default callback handler
 
