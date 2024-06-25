@@ -1,5 +1,4 @@
 #include "gl_renderer.h"
-#include "game_lib.h"
 
 struct GLContext
 {
