@@ -8,4 +8,4 @@ struct Input
     int screenSizeY;
 };
 
-static Input input;
+static Input* input;
